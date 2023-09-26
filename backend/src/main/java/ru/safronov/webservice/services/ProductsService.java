@@ -3,8 +3,8 @@ package ru.safronov.webservice.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.safronov.webservice.models.Product;
 import ru.safronov.webservice.repositories.ProductsRepository;
-
 import java.util.List;
 
 @Service
@@ -17,7 +17,7 @@ public class ProductsService {
         this.orderDetailsRepository = orderDetailsRepository;
     }
 
-    public List<ru.safronov.webservice.models.Product> findAll() {
+    public List<Product> findAll() {
         return orderDetailsRepository.findAll();
     }
 }

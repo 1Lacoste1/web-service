@@ -1,9 +1,6 @@
 package ru.safronov.webservice.models;
 
 import jakarta.persistence.*;
-import jdk.dynalink.linker.LinkerServices;
-
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -14,14 +11,19 @@ public class Order {
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
+
     @OneToMany(mappedBy = "orders_id")
     private List<Product> products;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "address")
     private String address;
+
     @Column(name = "amount")
     private int amount;
+
     @Column(name = "created_at")
     private Date createdAt;
 

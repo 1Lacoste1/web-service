@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.safronov.webservice.models.Order;
 import ru.safronov.webservice.repositories.OrdersRepository;
-
 import java.util.List;
 
 @Service
@@ -21,6 +20,4 @@ public class OrdersService {
     public List<Order> findAll() {
         return ordersRepository.findAll();
     }
-
-
 }

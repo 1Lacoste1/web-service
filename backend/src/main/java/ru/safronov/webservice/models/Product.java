@@ -8,12 +8,16 @@ public class Product {
     @Id
     @Column(name = "ID")
     private int ID;
+
     @Column(name = "serial")
     private String serial;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "quantity")
     private int quantity;
+
     @ManyToOne()
     @JoinColumn(name = "orders_id", referencedColumnName = "ID")
     private Order orders_id;
