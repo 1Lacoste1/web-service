@@ -10,20 +10,23 @@ const GetReservation = async () => {
   })
 }
 GetReservation()
-export default {
-  name: "Reservation"
-}
 </script>
 
 <template>
   <ul>
     <li v-for="reservation in reservations" :key="reservation.id">
       <p>
-        {{reservation.name}}
+        {{ reservation.name }}
       </p>
       <p>
-        {{reservation.price}}
+        {{ reservation.price }}
       </p>
     </li>
   </ul>
 </template>
+
+<script>
+export default {
+  name: "Reservation"
+}
+</script>
