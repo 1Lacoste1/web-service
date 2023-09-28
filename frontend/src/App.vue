@@ -1,15 +1,15 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <Reservation/>
+  <ReservationItems/>
 </template>
 
 <script>
-import Reservation from './components/Reservation.vue'
+import ReservationItems from './components/Reservation.vue'
 
 export default {
   name: 'App',
   components: {
-
+    ReservationItems
   }
 }
 </script>

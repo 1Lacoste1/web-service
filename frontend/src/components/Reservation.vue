@@ -5,9 +5,16 @@ import { ref } from 'vue'
 const reservations = ref([])
 
 const GetReservation = async () => {
-  await fetch('http://localhost:6060/orders').then((response) => {
+  await fetch('http://localhost:6060/orders', {
+    mode: 'cors',
+    headers: {
+      'Access-Control-Allow-Origin':'*'
+    }
+  }).then((response) => {
     reservations.value = response.data
+
   })
+  console.log(reservations);
 }
 GetReservation()
 </script>
@@ -19,7 +26,7 @@ GetReservation()
         {{ reservation.name }}
       </p>
       <p>
-        {{ reservation.price }}
+        {{ reservation.address }}
       </p>
     </li>
   </ul>
@@ -27,6 +34,6 @@ GetReservation()
 
 <script>
 export default {
-  name: "Reservation"
+  name: "ReservationItems"
 }
 </script>
