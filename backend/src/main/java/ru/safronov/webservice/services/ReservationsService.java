@@ -10,14 +10,14 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public class ReservationsService {
-    private final ReservationsRepository ordersRepository;
+    private final ReservationsRepository reservationsRepository;
 
     @Autowired
-    public ReservationsService(ReservationsRepository ordersRepository) {
-        this.ordersRepository = ordersRepository;
+    public ReservationsService(ReservationsRepository reservationsRepository) {
+        this.reservationsRepository = reservationsRepository;
     }
 
     public List<Reservation> findAll() {
-        return ordersRepository.findAll();
+        return reservationsRepository.findAll();
     }
 }

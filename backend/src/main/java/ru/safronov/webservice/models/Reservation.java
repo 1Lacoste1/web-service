@@ -3,8 +3,6 @@ package ru.safronov.webservice.models;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,7 +23,7 @@ public class Reservation {
     private int amount;
 
     @Column(name = "date_creation")
-    private Date date_creation;
+    private String date_creation;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "orders_id")
@@ -33,7 +31,7 @@ public class Reservation {
 
     public Reservation() {}
 
-    public Reservation(int ID, String name, String address, int amount, Date date_creation, List<Product> products) {
+    public Reservation(int ID, String name, String address, int amount, String date_creation, List<Product> products) {
         this.ID = ID;
         this.name = name;
         this.address = address;
@@ -82,11 +80,11 @@ public class Reservation {
         this.amount = amount;
     }
 
-    public Date getDate_creation() {
+    public String getDate_creation() {
         return date_creation;
     }
 
-    public void setDate_creation(Date date_creation) {
+    public void setDate_creation(String date_creation) {
         this.date_creation = date_creation;
     }
 }
