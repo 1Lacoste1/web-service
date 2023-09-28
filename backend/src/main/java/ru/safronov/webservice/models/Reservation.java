@@ -2,6 +2,8 @@ package ru.safronov.webservice.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -31,12 +33,13 @@ public class Reservation {
 
     public Reservation() {}
 
-    public Reservation(List<Product> products, String name, String address, int amount, Date createdAt) {
-        this.products = products;
+    public Reservation(int ID, String name, String address, int amount, Date date_creation, List<Product> products) {
+        this.ID = ID;
         this.name = name;
         this.address = address;
         this.amount = amount;
-        this.date_creation = createdAt;
+        this.date_creation = date_creation;
+        this.products = products;
     }
 
     public List<Product> getProducts() {
@@ -79,11 +82,11 @@ public class Reservation {
         this.amount = amount;
     }
 
-    public Date getCreatedAt() {
+    public Date getDate_creation() {
         return date_creation;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.date_creation = createdAt;
+    public void setDate_creation(Date date_creation) {
+        this.date_creation = date_creation;
     }
 }
