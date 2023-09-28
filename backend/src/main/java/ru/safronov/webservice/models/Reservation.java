@@ -1,19 +1,17 @@
 package ru.safronov.webservice.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "Order")
-public class Order {
+@Table(name = "Reservation")
+public class Reservation {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
-
-    @OneToMany(mappedBy = "orders_id")
-    private List<Product> products;
 
     @Column(name = "name")
     private String name;
@@ -24,17 +22,21 @@ public class Order {
     @Column(name = "amount")
     private int amount;
 
-    @Column(name = "created_at")
-    private Date createdAt;
+    @Column(name = "date_creation")
+    private Date date_creation;
 
-    public Order() {}
+    @JsonManagedReference
+    @OneToMany(mappedBy = "orders_id")
+    private List<Product> products;
 
-    public Order(List<Product> products, String name, String address, int amount, Date createdAt) {
+    public Reservation() {}
+
+    public Reservation(List<Product> products, String name, String address, int amount, Date createdAt) {
         this.products = products;
         this.name = name;
         this.address = address;
         this.amount = amount;
-        this.createdAt = createdAt;
+        this.date_creation = createdAt;
     }
 
     public List<Product> getProducts() {
@@ -78,10 +80,10 @@ public class Order {
     }
 
     public Date getCreatedAt() {
-        return createdAt;
+        return date_creation;
     }
 
     public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+        this.date_creation = createdAt;
     }
 }

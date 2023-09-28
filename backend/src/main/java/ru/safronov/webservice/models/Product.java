@@ -1,5 +1,6 @@
 package ru.safronov.webservice.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,13 +19,14 @@ public class Product {
     @Column(name = "quantity")
     private int quantity;
 
+    @JsonBackReference
     @ManyToOne()
     @JoinColumn(name = "orders_id", referencedColumnName = "ID")
-    private Order orders_id;
+    private Reservation orders_id;
 
     public Product() {}
 
-    public Product(int ID, String serial, String name, int quantity, Order orders_id) {
+    public Product(int ID, String serial, String name, int quantity, Reservation orders_id) {
         this.ID = ID;
         this.serial = serial;
         this.name = name;
@@ -64,11 +66,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public Order getOrders_id() {
+    public Reservation getOrders_id() {
         return orders_id;
     }
 
-    public void setOrders_id(Order orders_id) {
+    public void setOrders_id(Reservation orders_id) {
         this.orders_id = orders_id;
     }
 }
