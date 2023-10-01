@@ -12,15 +12,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/orders")
 public class ReservationsController {
-    private final ReservationsService ordersService;
+    private final ReservationsService reservationsService;
 
     @Autowired
-    public ReservationsController(ReservationsService ordersService) {
-        this.ordersService = ordersService;
+    public ReservationsController(ReservationsService reservationsService) {
+        this.reservationsService = reservationsService;
     }
 
     @GetMapping()
     public List<Reservation> show() {
-        return ordersService.findAll();
+        return reservationsService.findAllWithProduct();
     }
 }

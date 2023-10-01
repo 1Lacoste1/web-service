@@ -1,9 +1,9 @@
 <script setup>
 
 import { ref } from 'vue'
+import "@/components/Reservation.vue";
 
 const reservations = ref([])
-const products = ref([])
 
 const GetReservation = async () => {
   const response = await fetch('http://localhost:6060/orders')
@@ -11,14 +11,7 @@ const GetReservation = async () => {
   reservations.value = data
 }
 
-const GetProduct = async () => {
-  const response = await fetch('http://localhost:6060/products')
-  const data = await response.json()
-  products.value = data
-}
-
 GetReservation()
-GetProduct()
 
 </script>
 
@@ -31,9 +24,9 @@ GetProduct()
         {{ reservation.name }} {{ reservation.address }}
         {{ reservation.amount }} {{ reservation.date_creation.toString()}}
         <ul>
-          <li v-for="(product, index) in getProductsByReservationId(reservation.id)" :key="index">
-              {{ product.id }} {{ product.serial }} {{ product.name }} {{ product.quantity }}
-          </li>
+          <p v-for="(product, index) in reservation.products" v-bind:key="index">
+            {{product.serial}} {{product.name}} {{product.quantity}}
+          </p>
         </ul>
       </li>
     </ul>
@@ -49,13 +42,7 @@ export default {
   name: "ReservationItems",
   data() {
     return {
-      reservations: [],
-      products: []
-    }
-  },
-  computed: {
-    getProductsByReservationId:function(reservationId) {
-      return this.products.filter(product => product.orders_id === reservationId);
+      reservations: []
     }
   }
 }

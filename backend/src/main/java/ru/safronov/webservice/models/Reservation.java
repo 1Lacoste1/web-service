@@ -9,9 +9,9 @@ import java.util.List;
 @Table(name = "Reservation")
 public class Reservation {
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ID;
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -31,8 +31,8 @@ public class Reservation {
 
     public Reservation() {}
 
-    public Reservation(int ID, String name, String address, int amount, String date_creation, List<Product> products) {
-        this.ID = ID;
+    public Reservation(int id, String name, String address, int amount, String date_creation, List<Product> products) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.amount = amount;
@@ -48,12 +48,12 @@ public class Reservation {
         this.products = products;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

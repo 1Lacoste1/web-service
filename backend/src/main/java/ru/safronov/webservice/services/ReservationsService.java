@@ -17,7 +17,7 @@ public class ReservationsService {
         this.reservationsRepository = reservationsRepository;
     }
 
-    public List<Reservation> findAll() {
-        return reservationsRepository.findAll();
+    public List<Reservation> findAllWithProduct() {
+        return reservationsRepository.findAllWithProduct();
     }
 }

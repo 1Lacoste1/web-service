@@ -7,8 +7,8 @@ import jakarta.persistence.*;
 @Table(name = "Product")
 public class Product {
     @Id
-    @Column(name = "ID")
-    private int ID;
+    @Column(name = "id")
+    private int id;
 
     @Column(name = "serial")
     private String serial;
@@ -21,25 +21,25 @@ public class Product {
 
     @JsonBackReference
     @ManyToOne()
-    @JoinColumn(name = "orders_id", referencedColumnName = "ID")
+    @JoinColumn(name = "orders_id", referencedColumnName = "id")
     private Reservation orders_id;
 
     public Product() {}
 
-    public Product(int ID, String serial, String name, int quantity, Reservation orders_id) {
-        this.ID = ID;
+    public Product(int id, String serial, String name, int quantity, Reservation orders_id) {
+        this.id = id;
         this.serial = serial;
         this.name = name;
         this.quantity = quantity;
         this.orders_id = orders_id;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getSerial() {
