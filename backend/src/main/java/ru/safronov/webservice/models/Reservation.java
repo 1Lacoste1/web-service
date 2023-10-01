@@ -1,38 +1,43 @@
 package ru.safronov.webservice.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import jdk.dynalink.linker.LinkerServices;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "Order")
-public class Order {
+@Table(name = "Reservation")
+public class Reservation {
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ID;
-    @OneToMany(mappedBy = "orders_id")
-    private List<Product> products;
+    private int id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "address")
     private String address;
+
     @Column(name = "amount")
     private int amount;
-    @Column(name = "created_at")
-    private Date createdAt;
 
-    public Order() {}
+    @Column(name = "date_creation")
+    private String date_creation;
 
-    public Order(List<Product> products, String name, String address, int amount, Date createdAt) {
-        this.products = products;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "orders_id")
+    private List<Product> products;
+
+    public Reservation() {}
+
+    public Reservation(int id, String name, String address, int amount, String date_creation, List<Product> products) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.amount = amount;
-        this.createdAt = createdAt;
+        this.date_creation = date_creation;
+        this.products = products;
     }
 
     public List<Product> getProducts() {
@@ -43,12 +48,12 @@ public class Order {
         this.products = products;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -75,11 +80,11 @@ public class Order {
         this.amount = amount;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public String getDate_creation() {
+        return date_creation;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setDate_creation(String date_creation) {
+        this.date_creation = date_creation;
     }
 }
