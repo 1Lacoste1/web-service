@@ -18,18 +18,16 @@ GetReservation()
 <template>
   <div>
     <h5>Заказы</h5>
-    <ul>
-      <li v-for="reservation in reservations" :key="reservation.id">
+      <p v-for="reservation in reservations" :key="reservation.id">
         {{ reservation.id }}
         {{ reservation.name }} {{ reservation.address }}
         {{ reservation.amount }} {{ reservation.date_creation.toString()}}
         <ul>
-          <p v-for="(product, index) in reservation.products" v-bind:key="index">
+          <li v-for="(product, index) in reservation.products" v-bind:key="index">
             {{product.serial}} {{product.name}} {{product.quantity}}
-          </p>
+          </li>
         </ul>
-      </li>
-    </ul>
+      </p>
   </div>
 
   <div v-if="!reservations" >
